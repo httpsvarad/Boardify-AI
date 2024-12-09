@@ -103,7 +103,7 @@ const App = () => {
 
 
       </div>
-      <div className="flex-1 relative">
+      <div className="flex-1 h-auto overflow-hidden relative">
 
         <CanvasDraw
           hideGrid={true}
