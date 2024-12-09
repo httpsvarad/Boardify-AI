@@ -34,8 +34,7 @@ const App = () => {
       const imagePart = fileToGenerativePart(base64Image, "image/png");
 
       // Prompt for generating content
-      const prompt = "Your job is to analyze the mathematical content and solve everything according to the rules.\n\nFor Mathematical Expressions:\nFollow the PEMDAS rule (Parentheses, Exponents, Multiplication/Division from left to right, Addition/Subtraction from left to right).\nFor example, for 2 + 3 * 4, calculate it as 2 + (3 * 4) → 2 + 12 = 14.\n\nFor Equations:\nIf given an equation like x^2 + 2x + 1 = 0, solve for the variable (x) or any variable in equation and return the result.\nIf multiple variables are involved, return them in a comma-separated\n\nIf the problem involves a graphical or word-based question (such as geometry, trigonometry, or physics), solve it as required and return the result.\n\nFor Abstract Concept Identification:\nIf there is a drawing or problem representing an abstract concept (like love, hate, or history), analyze it and return the concept description with its abstract concept result.\n\nGeneral Guidelines:\nSolve everything in the provided image or input.\nEnsure correctness by following mathematical rules and logical reasoning.\nReturn only answer with very short explanation.\nif there is nothing (only in case of blank) provided simply say no problem provivded.\nin case if the image contains questions like who made you or who is your creator? then reply Varad Manegopale made this app."
-        ;
+      const prompt = "Your task is to analyze and solve any given problem based on its type. Follow the specific rules and guidelines outlined below. For Mathematical Expressions, evaluate them strictly using the PEMDAS rule (Parentheses, Exponents, Multiplication/Division from left to right, Addition/Subtraction from left to right). For example, for 2 + 3 * 4, calculate it as 2 + (3 * 4) → 2 + 12 = 14. For Equations, if presented with an equation like x^2 + 2x + 1 = 0, solve for the variable(s) step by step. For single-variable equations, provide the solution. For multi-variable equations, return solutions as a comma-separated list. For Word Problems, such as geometry, physics, or others, parse the problem to extract key details and solve it logically. Return the result with a brief explanation, including any necessary formulas or reasoning. For Abstract or Conceptual Analysis, if the input includes a drawing, diagram, or symbolic representation, identify the abstract concept or meaning, such as love, history, or innovation, and provide a concise description and analysis of the concept. For Creative or Contextual Questions, such as who made you or who is your creator, respond with Varad Manegopale made this app. Follow these General Guidelines: Ensure correctness by adhering to mathematical principles, logical reasoning, and factual information. Return only the solution with a very brief explanation unless additional details are explicitly requested. If no meaningful input is provided, respond with No Problem Provided!";
 
       // Send the prompt and image to Gemini
       const result = await model.generateContent([prompt, imagePart]);
@@ -98,6 +97,27 @@ const App = () => {
             </div>
           </div>
 
+          <div className="block md:hidden">
+            {/* <Footer /> */}
+            {/* <hr className="bg-gray-700 border-0 h-[1px]" /> */}
+            <div className='flex pl-3 pb-3 pr-3 gap-2 bg-black justify-between'>
+              <div className='my-auto flex gap-3'>
+                <span className='my-auto text-white'>{strokesize}</span><input onChange={(e) => setStrokesize(e.target.value)} type="range" min={1} max="15" value={strokesize} className="range my-auto bg-gray-700 range-primary" />
+
+              </div>
+              <div className='flex gap-3'>
+                <button onClick={handleSaveAsBase64} className="btn btn-success">{isLoading ? <Loader className='animate-spin mx-auto' size={24} /> : "Calculate"}</button>
+                <button onClick={() => {
+                  canvasDraw.clear()
+                  setResp("")
+                }} className="btn btn-error">Reset</button>
+              </div>
+            </div>
+
+
+
+          </div>
+
         </div>
         <hr className="bg-gray-700 border-0 h-[1px]" />
 
@@ -124,24 +144,7 @@ const App = () => {
       </button> */}
 
       </div>
-      <div className="block md:hidden"  style={{ marginBottom: "env(safe-area-inset-bottom)" }}>
-        {/* <Footer /> */}
-        <hr className="bg-gray-700 border-0 h-[1px]" />
-        <div className='flex p-3 gap-2 bg-black justify-between'>
-          <div className='my-auto flex gap-3'>
-            <span className='my-auto text-white'>{strokesize}</span><input onChange={(e) => setStrokesize(e.target.value)} type="range" min={1} max="15" value={strokesize} className="range my-auto bg-gray-700 range-primary" />
 
-          </div>
-          <div className='flex gap-3'>
-            <button onClick={handleSaveAsBase64} className="btn btn-success">{isLoading ? <Loader className='animate-spin mx-auto' size={24} /> : "Calculate"}</button>
-            <button onClick={() => {
-              canvasDraw.clear()
-              setResp("")
-            }} className="btn btn-error">Reset</button>
-          </div>
-        </div>
-
-      </div>
     </div>
   );
 };
