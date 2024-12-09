@@ -5,6 +5,7 @@ import { Eraser, Loader, Pencil, Undo } from 'lucide-react'
 
 
 const apikey = import.meta.env.VITE_GEMINI_API_KEY;
+console.log(apikey)
 
 
 const genAI = new GoogleGenerativeAI(apikey);
