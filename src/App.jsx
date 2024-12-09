@@ -62,7 +62,7 @@ const App = () => {
 
   return (
 
-    <div className="h-screen flex flex-col overflow-hidden">
+    <div className="h-screen flex flex-col overflow-hidden" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
       <div className="absolute p-[10px] md:bottom-5 bottom-20 z-10 text-white">
         {resp}
       </div>
@@ -103,7 +103,7 @@ const App = () => {
 
 
       </div>
-      <div className="flex-1 h-auto overflow-hidden relative">
+      <div className="flex-1 relative">
 
         <CanvasDraw
           hideGrid={true}
