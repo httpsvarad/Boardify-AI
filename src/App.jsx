@@ -62,7 +62,7 @@ const App = () => {
 
   return (
 
-    <div className="h-screen flex flex-col overflow-hidden" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
+    <div className="h-screen flex flex-col overflow-hidden">
       <div className="absolute p-[10px] md:bottom-5 bottom-20 z-10 text-white">
         {resp}
       </div>
@@ -124,7 +124,7 @@ const App = () => {
       </button> */}
 
       </div>
-      <div className="block md:hidden">
+      <div className="block md:hidden"  style={{ marginBottom: "env(safe-area-inset-bottom)" }}>
         {/* <Footer /> */}
         <hr className="bg-gray-700 border-0 h-[1px]" />
         <div className='flex p-3 gap-2 bg-black justify-between'>
