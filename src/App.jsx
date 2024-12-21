@@ -74,7 +74,7 @@ const App = () => {
             <div className='flex gap-3'>
               <div className='my-auto hidden md:block'>
                 <div className='flex gap-3'>
-                  <span className='my-auto text-white'>{strokesize}</span><input onChange={(e) => setStrokesize(e.target.value)} type="range" min={1} max="15" value={strokesize} className="range my-auto bg-gray-700 range-primary" />
+                  <span className='my-auto text-white'>{strokesize}</span><input onChange={(e) => setStrokesize(e.target.value)} type="range" min={1} max="15" value={strokesize} className="range my-auto range-primary"/>
                 </div>
 
               </div>
@@ -102,7 +102,7 @@ const App = () => {
             {/* <hr className="bg-gray-700 border-0 h-[1px]" /> */}
             <div className='flex pl-3 pb-3 pr-3 gap-2 bg-black justify-between'>
               <div className='my-auto flex gap-3'>
-                <span className='my-auto text-white'>{strokesize}</span><input onChange={(e) => setStrokesize(e.target.value)} type="range" min={1} max="15" value={strokesize} className="range my-auto bg-gray-700 range-primary" />
+                <span className='my-auto text-white'>{strokesize}</span><input onChange={(e) => setStrokesize(e.target.value)} type="range" min={1} max="15" value={strokesize} className="range my-auto range-primary" />
 
               </div>
               <div className='flex gap-3'>
